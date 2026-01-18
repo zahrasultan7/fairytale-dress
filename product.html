@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Product | Fairytale Dress</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===== BASE STYLES ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin:0;
+    padding:0;
+    background:#FFFDFB;
+    color:#5A3A44;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+    background:#E8B7C8;
+    color:#5A3A44;
+    font-weight:600;
+    box-shadow: 0 2px 8px rgba(201,122,149,0.25);
+}
+
+.logo {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.4rem;
+    font-weight:700;
+}
+
+.logo img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    border-radius:5px;
+}
+
+/* NAV LINKS */
+.nav-links {
+    list-style:none;
+    display:flex;
+    gap:25px;
+    align-items:center;
+    margin:0;
+    padding:0;
+}
+
+.nav-links a {
+    color:#5A3A44;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color:#C97A95;
+    border-bottom:2px solid #C97A95;
+}
+
+/* CART ICON */
+.cart-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.cart-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.cart-icon:hover img {
+    transform: scale(1.1);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #d977a3;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 12px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* PRODUCT CONTAINER */
+.product-container {
+    max-width:400px;
+    margin:40px auto;
+    background:#ffffff;
+    padding:35px;
+    border-radius:26px;
+    box-shadow:0 18px 45px rgba(201,122,149,0.25);
+    text-align:center;
+    position: relative;
+}
+
+.product-container img {
+    width:100%;
+    max-width:300px;
+    border-radius:22px;
+    margin-bottom:15px;
+    box-shadow:0 10px 25px rgba(201,122,149,0.25);
+}
+
+.product-container h2 {
+    color:#C97A95;
+    margin-bottom:10px;
+    font-weight:400;
+}
+
+.product-container p {
+    font-size:1.1rem;
+    font-weight:400;
+    color:#7A4B5A;
+    margin-bottom:15px;
+}
+
+/* SELECT */
+select {
+    width:100%;
+    padding:12px;
+    font-size:1rem;
+    border-radius:30px;
+    border:1px solid #E6C1CE;
+    margin-bottom:15px;
+    outline:none;
+}
+
+/* ADD TO CART BUTTON */
+button {
+    display:block;
+    width:100%;
+    background:#C97A95;
+    color:#fff;
+    border:none;
+    padding:14px;
+    font-size:1rem;
+    border-radius:20px;
+    cursor:pointer;
+    margin-top:10px;
+    font-weight:400;
+    transition:0.3s;
+}
+
+button:hover {
+    background:#B5677F;
+}
+
+/* VIEW SIZE CHART */
+#view-chart-btn {
+    display:inline-block;
+    font-size:0.70rem;
+    font-weight:400;
+    text-decoration:underline;
+    color:#5A3A44;
+    margin-bottom:12px;
+    cursor:pointer;
+    float:right;
+}
+
+/* TOAST */
+#toast {
+    visibility:hidden;
+    min-width:250px;
+    max-width:320px;
+    margin-left:-160px;
+    background: linear-gradient(135deg,#FFC1CC,#FFD6E0);
+    color:#5A3A44;
+    font-weight:600;
+    text-align:center;
+    border-radius:20px;
+    padding:16px;
+    position:fixed;
+    z-index:9999;
+    left:50%;
+    bottom:30px;
+    font-family:'Poppins',sans-serif;
+    box-shadow:0 6px 18px rgba(201,122,149,0.3);
+    transform:translateY(20px);
+    opacity:0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+#toast.show {
+    visibility:visible;
+    opacity:1;
+    transform:translateY(0);
+}
+.toast-sparkle {
+    display:inline-block;
+    animation:sparkle 1s ease forwards;
+    margin-left:5px;
+    font-size:1.2rem;
+}
+@keyframes sparkle {
+    0% {transform:scale(0.8) rotate(0deg);opacity:0;}
+    50% {transform:scale(1.2) rotate(20deg);opacity:1;}
+    100% {transform:scale(1) rotate(-10deg);opacity:0;}
+}
+
+/* RESPONSIVE */
+@media(max-width:450px){
+    .product-container {padding:25px;}
+    #view-chart-btn {float:none; text-align:left;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="fairytale2.jpg" alt="Fairytale Logo">
+    Fairytale Dress
+  </div>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li>
+      <a href="cart.html" class="cart-icon">
+        <img src="cart.jpg" alt="Cart">
+        <span class="cart-badge" id="cart-count">0</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- PRODUCT -->
+<div class="product-container">
+  <img id="product-img" alt="Dress Image">
+  <h2 id="product-name"></h2>
+  <p id="product-price"></p>
+  <a id="view-chart-btn" href="size-chart.html">View Size Chart</a>
+
+  <select id="product-size">
+    <option value="">Select Size</option>
+    <option value="2">2 Years</option>
+    <option value="3">3 Years</option>
+    <option value="4">4 Years</option>
+    <option value="5">5 Years</option>
+    <option value="6">6 Years</option>
+    <option value="7">7 Years</option>
+    <option value="8">8 Years</option>
+    <option value="9">9 Years</option>
+    <option value="10">10 Years</option>
+    <option value="11">11 Years</option>
+  </select>
+
+  <button onclick="addToCart()">Add to Cart</button>
+
+  <p style="margin-top:10px;">Items in Cart: <span id="cart-total-count">0</span></p>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<script>
+// Populate product
+document.addEventListener("DOMContentLoaded", () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const price = params.get("price");
+    const img = params.get("img");
+
+    document.getElementById("product-name").textContent = name;
+    document.getElementById("product-price").textContent = "$" + price;
+    document.getElementById("product-img").src = "dress/" + img;
+
+    function showToast(message){
+        const toast = document.getElementById("toast");
+        toast.innerHTML = message + ' <span class="toast-sparkle">✨</span>';
+        toast.className = "show";
+        setTimeout(()=>{toast.className=toast.className.replace("show","");},3000);
+    }
+
+    window.addToCart = function(){
+        const size = document.getElementById("product-size").value;
+        if(!size){
+            showToast("❌ Please select a size!");
+            return;
+        }
+        cart.push({name, price:Number(price), size, img});
+        localStorage.setItem("cart", JSON.stringify(cart));
+        document.getElementById("cart-count").textContent = cart.length;
+        document.getElementById("cart-total-count").textContent = cart.length;
+        showToast(`🧚 "${name}" (Size: ${size}) added to cart!`);
+    };
+
+    // Update cart count on page load
+    document.getElementById("cart-count").textContent = cart.length;
+    document.getElementById("cart-total-count").textContent = cart.length;
+});
+
+// Redirect if not logged in
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+if(!currentUser){
+    alert("Please register or login first!");
+    window.location.href="register.html";
+}
+</script>
+
+</body>
+</html>

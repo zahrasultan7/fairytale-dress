@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kids Dress Size Chart | Fairytale Dress</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 20px 10px;
+  background: #fffdfb;
+  color: #5a3a44;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* IMAGE BOX WITH BORDER LIKE ADD TO CART */
+.image-box {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap; /* stack on small screens */
+  margin-bottom: 20px;
+  padding: 20px;                /* padding inside the box */
+  border-radius: 30px;           /* same as add to cart */
+  border: 2px solid #c97a95;     /* same color as add to cart button */
+  box-shadow: 0 5px 15px rgba(201,122,149,0.25); /* subtle shadow */
+  background: #fff;               /* optional to highlight box */
+}
+
+/* Chest image */
+.image-box img.chest {
+  width: 350px;
+  height: auto;
+  border-radius: 15px;
+  object-fit: contain;
+}
+
+/* Size image */
+.image-box img.size {
+  width: 500px;
+  height: auto;
+  border-radius: 15px;
+  object-fit: contain;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  background: #c97a95;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 30px; /* same as Add to Cart button */
+  text-decoration: none;
+  font-weight: 400;
+  transition: 0.3s;
+  margin-top: 15px;
+}
+
+.back-btn:hover {
+  background: #b5677f;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .image-box {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .image-box img.chest,
+  .image-box img.size {
+    width: 90%; /* scale down on smaller screens */
+  }
+}
+</style>
+</head>
+
+<body>
+
+<p>Use this chart to choose the perfect size for your little princess</p>
+
+<div class="image-box">
+  <img src="Chest.jpg" alt="Kids Chest Measurement" class="chest">
+  <img src="Size.jpg" alt="Kids Size Chart" class="size">
+</div>
+
+<a class="back-btn" href="javascript:history.back()">Back</a>
+
+</body>
+</html>

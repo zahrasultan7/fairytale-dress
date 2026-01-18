@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Collection | Fairytale Dress</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* ===== BASE STYLES ===== */
+body { 
+    font-family: 'Poppins', sans-serif;  /* unified font */
+    margin:0; 
+    padding:0; 
+    background-color: #FFFDFB; 
+    color: #5A3A44;
+}
+
+/* ===== NAVBAR ===== */
+.navbar { 
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center; 
+    padding:14px 28px; 
+    background:#E8B7C8; 
+    color:#5A3A44; 
+    font-weight:600;
+    box-shadow: 0 2px 8px rgba(201,122,149,0.25);
+    font-family: 'Poppins', sans-serif;
+}
+.logo {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.4rem;
+    font-weight:700;
+}
+
+.logo img {
+    width: 90px;   /* small logo size */
+    height: 90px;
+    object-fit: contain;
+    border-radius:5px;
+}
+.nav-links { 
+    list-style:none; 
+    display:flex; 
+    gap:22px; 
+    align-items:center;
+}
+
+.nav-links a { 
+    color:#5A3A44; 
+    text-decoration:none; 
+    font-weight:600; 
+    transition:0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-links a:hover,
+.nav-links a.active { 
+    color:#C97A95;
+    border-bottom:2px solid #C97A95;
+}
+
+/* ===== CART ICON IMAGE ===== */
+.nav-links .cart-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: auto; 
+    height: 30px;
+    cursor: pointer;
+}
+
+.nav-links .cart-icon img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.nav-links .cart-icon:hover img {
+    transform: scale(1.2);
+}
+
+/* ===== CART BADGE ===== */
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #d977a3;
+    color: #fff;
+    font-size: 0.75rem;  
+    font-weight: 700;
+    padding: 2px 6px;      
+    border-radius: 12px;
+    text-align: center;
+    line-height: 1.2;
+    white-space: nowrap;
+    min-width: 16px;  
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(to bottom, #FFFDFB, #F8E8EE);
+}
+
+.header-title {
+    display: inline-flex;       
+    align-items: center;        
+    justify-content: center;    
+    gap: 12px;                  
+    font-family: 'Poppins', sans-serif;  /* unified font */
+}
+
+.page-header h1 {
+    color: #C97A95;
+    font-size: 3rem;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;  /* unified font */
+}
+
+.page-header .header-img {
+    width: 100px;  
+    height: auto;
+}
+
+/* ===== PRODUCTS GRID ===== */
+.products { 
+    display:flex; 
+    flex-wrap:wrap; 
+    justify-content:center; 
+    gap:30px; 
+    padding:40px 20px; 
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== PRODUCT CARD ===== */
+.product-card { 
+    border:1px solid #E6C9D3; 
+    border-radius:18px; 
+    padding:22px; 
+    width:230px; 
+    text-align:center; 
+    cursor:pointer; 
+    transition:0.35s; 
+    background:#ffffff; 
+    box-shadow: 0 6px 16px rgba(201,122,149,0.18);
+    font-family: 'Poppins', sans-serif;
+}
+.product-card:hover { 
+    transform:translateY(-6px); 
+    box-shadow:0 12px 26px rgba(201,122,149,0.3); 
+}
+
+.product-card img { 
+    width:100%; 
+    border-radius:14px; 
+    margin-bottom:14px; 
+}
+
+.product-card h3 { 
+    color:#C97A95; 
+    margin-bottom:6px; 
+    font-size:1.15rem; 
+    font-family: 'Poppins', sans-serif;
+}
+
+.product-card .price { 
+    font-weight:600; 
+    color:#5A3A44; 
+    font-size:1rem; 
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== RESPONSIVE ===== */
+@media screen and (max-width:600px){ 
+    .products { 
+        flex-direction:column; 
+        align-items:center; 
+    } 
+}  
+
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+    <div class="logo">
+    <img src="fairytale2.jpg" alt="Fairytale Logo">
+    Fairytale Dress
+  </div>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+	<li><a href="index.html">Home</a></li>
+    <li><a href="collection.html" class="active">Collection</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li>
+      <a href="cart.html" class="cart-icon" title="Cart">
+        <img src="cart.jpg" alt="Cart">
+        <span class="cart-badge" id="cart-count">0</span>
+      </a>
+    </li>
+	<li class="lang-switch"><a href="index.html">EN</a> | <a href="index_ar.html">AR</a></li>
+
+  </ul>
+</nav>
+
+<header class="page-header">
+  <div class="header-title">
+    <h1>Our Collection</h1>
+	<img src="fairytale.jpg" alt="fairytale" class="header-img">
+  </div>
+  <p>Elegant dresses designed for little princesses</p>
+</header>
+
+
+<section class="products" id="products-section">
+  <!-- Products will be loaded dynamically -->
+</section>
+
+<script>
+// Array of dresses
+const dresses = [
+  { name: "Belle Dress", price: 45, img: "belle.jpg" },
+  { name: "Bfly Dress", price: 50, img: "bfly.jpg" },
+  { name: "Blossom Dress", price: 55, img: "blossom.jpg" },
+  { name: "Blush Dress", price: 55, img: "blush.jpg" },
+  { name: "Dasiy Dress", price: 55, img: "dasiy.jpg" },
+  { name: "Elsa Dress", price: 55, img: "elsa.jpg" },
+  { name: "Eva Dress", price: 55, img: "eva.jpg" },
+  { name: "Flora Dress", price: 55, img: "flora.jpg" },
+  { name: "Luna Dress", price: 55, img: "luna.jpg" },
+  { name: "Pearl Dress", price: 55, img: "pearl.jpg" },
+  { name: "Rosy Dress", price: 55, img: "rosy.jpg" }
+];
+
+// Render products
+const productsSection = document.getElementById("products-section");
+dresses.forEach(dress => {
+  const card = document.createElement("div");
+  card.className = "product-card";
+  card.innerHTML = `
+    <img src="dress/${dress.img}" alt="${dress.name}">
+    <h3>${dress.name}</h3>
+    <p class="price">$${dress.price}</p>
+  `;
+  card.onclick = () => {
+    const url = `product.html?name=${encodeURIComponent(dress.name)}&price=${dress.price}&img=${dress.img}`;
+    window.location.href = url;
+  };
+  productsSection.appendChild(card);
+});
+
+// Update cart count
+function updateCartCount() {
+    const cartCountBadge = document.getElementById("cart-count");
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cartCountBadge.textContent = cart.length;
+}
+updateCartCount();
+</script>
+<script>
+// Redirect to register if not logged in
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+if(!currentUser){
+    alert("Please register or login first!");
+    window.location.href = "register.html";
+}
+</script>
+
+</body>
+</html>

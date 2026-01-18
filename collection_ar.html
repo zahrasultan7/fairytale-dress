@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>التشكيلة | Fairytale Dress</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===== BASE STYLES ===== */
+body { 
+    font-family: 'Poppins', sans-serif;
+    margin:0; 
+    padding:0; 
+    background-color:#FFFDFB; 
+    color:#5A3A44;
+}
+
+/* ===== NAVBAR ===== */
+.navbar { 
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center; 
+    padding:14px 28px; 
+    background:#E8B7C8; 
+    box-shadow:0 2px 8px rgba(201,122,149,0.25);
+}
+
+.logo {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.4rem;
+    font-weight:700;
+}
+
+.logo img {
+    width:90px;
+    height:90px;
+    object-fit:contain;
+}
+
+.nav-links { 
+    list-style:none; 
+    display:flex; 
+    gap:22px; 
+    align-items:center;
+    margin:0;
+    padding:0;
+}
+
+.nav-links a { 
+    color:#5A3A44; 
+    text-decoration:none; 
+    font-weight:600; 
+    transition:0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active { 
+    color:#C97A95;
+    border-bottom:2px solid #C97A95;
+}
+
+/* ===== CART ICON ===== */
+.cart-icon {
+    position:relative;
+    display:flex;
+    align-items:center;
+}
+
+.cart-icon img {
+    width:30px;
+    height:30px;
+}
+
+.cart-badge {
+    position:absolute;
+    top:-8px;
+    left:-8px;
+    background:#d977a3;
+    color:#fff;
+    font-size:0.75rem;
+    font-weight:700;
+    padding:2px 6px;
+    border-radius:12px;
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+    text-align:center;
+    padding:50px 20px;
+    background:linear-gradient(to bottom,#FFFDFB,#F8E8EE);
+}
+
+.page-header h1 {
+    color:#C97A95;
+    font-size:3rem;
+    margin:0;
+}
+
+.page-header p {
+    font-size:1.1rem;
+    margin-top:10px;
+}
+
+/* ===== PRODUCTS GRID ===== */
+.products { 
+    display:flex; 
+    flex-wrap:wrap; 
+    justify-content:center; 
+    gap:30px; 
+    padding:40px 20px;
+}
+
+/* ===== PRODUCT CARD ===== */
+.product-card { 
+    border:1px solid #E6C9D3; 
+    border-radius:18px; 
+    padding:22px; 
+    width:230px; 
+    text-align:center; 
+    cursor:pointer; 
+    transition:0.35s; 
+    background:#ffffff; 
+    box-shadow:0 6px 16px rgba(201,122,149,0.18);
+}
+
+.product-card:hover { 
+    transform:translateY(-6px); 
+}
+
+.product-card img { 
+    width:100%; 
+    border-radius:14px; 
+    margin-bottom:14px; 
+}
+
+.product-card h3 { 
+    color:#C97A95; 
+    margin-bottom:6px; 
+    font-size:1.15rem; 
+}
+
+.product-card .price { 
+    font-weight:600; 
+    font-size:1rem; 
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+    .products{
+        flex-direction:column;
+        align-items:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="fairytale2.jpg" alt="Fairytale Logo">
+    فساتين خيالية
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="index_ar.html">الرئيسية</a></li>
+    <li><a href="collection_ar.html" class="active">المجموعة</a></li>
+    <li><a href="about_ar.html">من نحن</a></li>
+    <li><a href="contact_ar.html">تواصل معنا</a></li>
+    <li>
+      <a href="cart_ar.html" class="cart-icon">
+        <img src="cart.jpg" alt="السلة">
+        <span class="cart-badge" id="cart-count">0</span>
+      </a>
+    </li>
+	<li>
+      <a href="index_ar.html" class="lang-btn active">AR</a> | 
+      <a href="index.html" class="lang-btn">EN</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- ===== HEADER ===== -->
+<header class="page-header">
+  <h1>المجموعة</h1>
+  <p>فساتين أنيقة صُممت خصيصًا للأميرات الصغيرات</p>
+</header>
+
+<!-- ===== PRODUCTS ===== -->
+<section class="products" id="products-section"></section>
+
+<script>
+const dresses = [
+  { name: "فستان بيل", price: 45, img: "belle.jpg" },
+  { name: "فستان الفراشة", price: 50, img: "bfly.jpg" },
+  { name: "فستان بلوسوم", price: 55, img: "blossom.jpg" },
+  { name: "فستان بلش", price: 55, img: "blush.jpg" },
+  { name: "فستان ديزي", price: 55, img: "dasiy.jpg" },
+  { name: "فستان إلسا", price: 55, img: "elsa.jpg" },
+  { name: "فستان إيفا", price: 55, img: "eva.jpg" },
+  { name: "فستان فلورا", price: 55, img: "flora.jpg" },
+  { name: "فستان لونا", price: 55, img: "luna.jpg" },
+  { name: "فستان بيرل", price: 55, img: "pearl.jpg" },
+  { name: "فستان روزي", price: 55, img: "rosy.jpg" }
+];
+
+const productsSection = document.getElementById("products-section");
+
+dresses.forEach(dress => {
+  const card = document.createElement("div");
+  card.className = "product-card";
+  card.innerHTML = `
+    <img src="dress/${dress.img}">
+    <h3>${dress.name}</h3>
+    <p class="price">$${dress.price}</p>
+  `;
+  card.onclick = () => {
+    window.location.href =
+      `product_ar.html?name=${encodeURIComponent(dress.name)}&price=${dress.price}&img=${dress.img}`;
+  };
+  productsSection.appendChild(card);
+});
+
+// Cart count
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+document.getElementById("cart-count").textContent = cart.length;
+
+// Login check
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+if(!currentUser){
+    alert("يرجى تسجيل الدخول أو إنشاء حساب أولاً");
+    window.location.href="register.html";
+}
+</script>
+
+</body>
+</html>
