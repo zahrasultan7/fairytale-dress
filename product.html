@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Product | Fairytale Dress</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===== BASE STYLES ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin:0;
+    background:#fffdfb;
+    color:#5a3a44;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 40px;
+    background:#c97a95;
+    color:#fff;
+    box-shadow:0 4px 15px rgba(201,122,149,0.35);
+}
+.logo {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.4rem;
+    font-weight:700;
+}
+
+.logo img {
+    width: 90px;   /* small logo size */
+    height: 90px;
+    object-fit: contain;
+    border-radius:5px;
+}
+.nav-links {
+    list-style:none;
+    display:flex;
+    gap:30px;
+    align-items:center;
+}
+
+.nav-links a {
+    color:#fff;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.nav-links a:hover {
+    opacity:0.85;
+}
+
+/* ===== CART ICON ===== */
+.nav-links .cart-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: auto;   /* allow badge to show fully */
+    height: 30px;
+    cursor: pointer;
+}
+
+.nav-links .cart-icon img {
+    width: 30px;   /* cart icon size */
+    height: 30px;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+
+.cart-icon:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 4px 8px rgba(201,122,149,0.4));
+    cursor:pointer;
+}
+
+/* ===== PRODUCT ===== */
+.product-container {
+    max-width:620px;
+    margin:60px auto;
+    background:#ffffff;
+    padding:35px;
+    border-radius:26px;
+    box-shadow:0 18px 45px rgba(201,122,149,0.25);
+    text-align:center;
+}
+
+.product-container img {
+    width:100%;
+    max-width:420px;
+    border-radius:22px;
+    margin-bottom:25px;
+    box-shadow:0 10px 25px rgba(201,122,149,0.25);
+}
+
+.product-container h2 {
+    color:#c97a95;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.product-container p {
+    font-size:1.1rem;
+    font-weight:600;
+    color:#7a4b5a;
+    margin-bottom:25px;
+}
+
+/* ===== SELECT ===== */
+select {
+    width:100%;
+    padding:14px;
+    font-size:1rem;
+    border-radius:30px;
+    border:1px solid #e6c1ce;
+    margin-bottom:18px;
+    outline:none;
+}
+
+/* ===== BUTTONS ===== */
+button, .btn {
+    display:block;
+    width:100%;
+    background:#c97a95;
+    color:#fff;
+    border:none;
+    padding:15px;
+    font-size:1rem;
+    border-radius:30px;
+    cursor:pointer;
+    margin-top:12px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+button:hover, .btn:hover {
+    background:#b5677f;
+}
+
+/* ===== TOAST MESSAGE ===== */
+#toast {
+    visibility: hidden; 
+    min-width: 250px;
+    max-width: 320px;
+    margin-left: -160px;
+    background: linear-gradient(135deg, #FFC1CC, #FFD6E0);
+    color: #5A3A44;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 20px;
+    padding: 16px;
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    bottom: 30px;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 6px 18px rgba(201,122,149,0.3);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Show toast */
+#toast.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Sparkles */
+@keyframes sparkle {
+    0% {transform: scale(0.8) rotate(0deg); opacity:0;}
+    50% {transform: scale(1.2) rotate(20deg); opacity:1;}
+    100% {transform: scale(1) rotate(-10deg); opacity:0;}
+}
+
+.toast-sparkle {
+    display:inline-block;
+    animation: sparkle 1s ease forwards;
+    margin-left:5px;
+    font-size:1.2rem;
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="fairytale2.jpg" alt="Fairytale Logo">
+    Fairytale Dress
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li>
+      <a href="cart.html" class="cart-link">
+        <img src="cart.jpg" alt="Cart" class="cart-icon">
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- PRODUCT -->
+<div class="product-container">
+  <img id="product-img" alt="Dress Image">
+  <h2 id="product-name"></h2>
+  <p id="product-price"></p>
+
+  <select id="product-size">
+    <option value="">Select Size</option>
+    <option value="2-3">2–3 Years</option>
+    <option value="4-5">4–5 Years</option>
+    <option value="6-7">6–7 Years</option>
+    <option value="8-9">8–9 Years</option>
+  </select>
+
+  <a id="view-chart-btn" class="btn" href="size-chart.html">
+    View Size Chart
+  </a>
+
+  <button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<!-- Cute Toast Message -->
+<div id="toast"></div>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const price = params.get("price");
+    const img = params.get("img");
+
+    document.getElementById("product-name").textContent = name;
+    document.getElementById("product-price").textContent = "$" + price;
+    document.getElementById("product-img").src = "dress/" + img;
+
+    // Show cute toast
+    function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.innerHTML = message + ' <span class="toast-sparkle">✨</span>';
+        toast.className = "show";
+        setTimeout(() => {
+            toast.className = toast.className.replace("show", "");
+        }, 3000);
+    }
+
+    window.addToCart = function () {
+        const size = document.getElementById("product-size").value;
+        if (!size) {
+            showToast("❌ Please select a size!");
+            return;
+        }
+
+        cart.push({
+            name,
+            price: Number(price),
+            size,
+            img
+        });
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        showToast(`🧚 "${name}" (Size: ${size}) added to cart!`);
+    };
+});
+</script>
+<script>
+// Redirect to register if not logged in
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+if(!currentUser){
+    alert("Please register or login first!");
+    window.location.href = "register.html";
+}
+</script>
+
+</body>
+</html>

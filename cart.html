@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Cart | Fairytale Dress</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===== BASE STYLES ===== */
+body {
+    font-family:'Poppins', sans-serif;
+    margin:0;
+    background:#fffafb; /* soft pink-white */
+    color:#4a3a40;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 40px;
+    background:#e48fb3; /* logo color */
+    color:#fff;
+    box-shadow:0 4px 15px rgba(228,143,179,0.4);
+}
+.logo {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.4rem;
+    font-weight:700;
+}
+
+.logo img {
+    width: 90px;   /* small logo size */
+    height: 90px;
+    object-fit: contain;
+    border-radius:5px;
+}
+.nav-links {
+    list-style:none;
+    display:flex;
+    gap:30px;
+    align-items:center;
+}
+
+.nav-links a {
+    color:#fff;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.nav-links a:hover {
+    opacity:0.85;
+}
+
+.nav-links .cart-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: auto;   /* allow it to expand for badge */
+    height: 30px;
+    border-radius: 1px;
+    cursor: pointer;
+}
+
+.nav-links .cart-icon img {
+    width: 30px;   /* keep icon size fixed */
+    height: 30px;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+
+
+.nav-links .cart-icon:hover img {
+    transform: scale(1.2);
+}
+
+/* ===== CART BADGE ===== */
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #d977a3;
+    color: #fff;
+    font-size: 0.75rem;    /* small font */
+    font-weight: 700;
+    padding: 2px 6px;      /* enough horizontal space for 2-3 digits */
+    border-radius: 12px;
+    text-align: center;
+    line-height: 1.2;
+    white-space: nowrap;
+    min-width: 16px;        /* ensures small numbers are still circular */
+}
+
+
+/* ===== CART CONTAINER ===== */
+.cart-container {
+    max-width:850px;
+    margin:60px auto;
+    background:#fff;
+    padding:35px;
+    border-radius:28px;
+    box-shadow:0 18px 40px rgba(228,143,179,0.25);
+}
+
+.cart-container h2 {
+    color:#e48fb3;
+    margin-bottom:25px;
+}
+
+/* ===== CART ITEM ===== */
+.cart-item {
+    display:flex;
+    align-items:center;
+    gap:22px;
+    margin-bottom:22px;
+    border-bottom:1px solid #f5d6e3;
+    padding-bottom:18px;
+}
+
+.cart-item img {
+    width:90px;
+    border-radius:14px;
+}
+
+.cart-item h4 {
+    margin:0;
+    color:#e48fb3;
+    font-weight:600;
+}
+
+.cart-item p {
+    margin:5px 0;
+    font-size:0.9rem;
+    color:#7a4a5c;
+}
+
+/* ===== REMOVE BUTTON ===== */
+.remove-btn {
+    margin-left:auto;
+    background:#e48fb3;
+    color:#fff;
+    border:none;
+    padding:10px 16px;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.remove-btn:hover {
+    background:#d977a3;
+}
+
+/* ===== TOTAL ===== */
+.total {
+    text-align:right;
+    font-size:1.3rem;
+    font-weight:700;
+    margin-top:25px;
+    color:#e48fb3;
+}
+
+/* ===== EMPTY CART ===== */
+.empty {
+    text-align:center;
+    color:#9c7b88;
+    font-size:1.1rem;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.actions {
+    margin-top:30px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.actions a {
+    text-decoration:none;
+    padding:14px 28px;
+    border-radius:30px;
+    font-weight:600;
+    text-align:center;
+    transition:0.3s;
+}
+
+.shop-btn {
+    background:#f3e6ec;
+    color:#7a4a5c;
+}
+
+.shop-btn:hover {
+    background:#ead1dc;
+}
+
+.checkout-btn {
+    background:#e48fb3;
+    color:#fff;
+}
+
+.checkout-btn:hover {
+    background:#d977a3;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="fairytale2.jpg" alt="Fairytale Logo">
+    Fairytale Dress
+  </div> 
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li>
+      <a href="cart.html" class="cart-icon" title="Cart">
+        <img src="cart.jpg" alt="Cart">
+        <span class="cart-badge" id="cart-count">0</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- ===== CART ===== -->
+<div class="cart-container">
+  <h2>Your Shopping Cart</h2>
+  <div id="cart-items"></div>
+  <div class="total" id="cart-total"></div>
+
+  <div class="actions" id="cart-actions" style="display:none;">
+    <a href="collection.html" class="shop-btn">← Continue Shopping</a>
+    <a href="checkout.html" class="checkout-btn">Checkout</a>
+  </div>
+</div>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+const cartItemsDiv = document.getElementById("cart-items");
+const cartTotalDiv = document.getElementById("cart-total");
+const cartActions = document.getElementById("cart-actions");
+const cartCountBadge = document.getElementById("cart-count");
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function updateCartCount() {
+    cartCountBadge.textContent = cart.length;
+}
+
+function renderCart() {
+    cartItemsDiv.innerHTML = "";
+    let total = 0;
+
+    if(cart.length === 0){
+        cartItemsDiv.innerHTML = "<p class='empty'>Your cart is empty 🛍️</p>";
+        cartTotalDiv.textContent = "";
+        cartActions.style.display = "none";
+        updateCartCount();
+        return;
+    }
+
+    cart.forEach((item, index) => {
+        total += Number(item.price) || 0;
+
+        const div = document.createElement("div");
+        div.className = "cart-item";
+
+        div.innerHTML = `
+            <img src="dress/${item.img}" alt="${item.name}">
+            <div>
+                <h4>${item.name}</h4>
+                <p>Size: ${item.size}</p>
+                <p>Price: $${item.price}</p>
+            </div>
+            <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+        `;
+
+        cartItemsDiv.appendChild(div);
+    });
+
+    cartTotalDiv.textContent = "Total: $" + total;
+    cartActions.style.display = "flex";
+    updateCartCount();
+}
+
+function removeItem(index){
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+}
+
+renderCart();
+</script>
+<script>
+// Redirect to register if not logged in
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+if(!currentUser){
+    alert("Please register or login first!");
+    window.location.href = "register.html";
+}
+</script>
+
+</body>
+</html>
+
