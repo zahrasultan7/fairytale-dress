@@ -1,0 +1,9 @@
+{
+  "name": "fairytale-payment",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.18.2",
+    "stripe": "^14.0.0",
+    "cors": "^2.8.5"
+  }
+}

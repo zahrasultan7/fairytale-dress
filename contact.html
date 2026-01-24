@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact | Fairytale Dress</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===== BASE STYLES ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin:0;
+    padding:0;
+    background:#FFFDFB;
+    color:#5A3A44;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+    background:#E8B7C8;
+    color:#5A3A44;
+    font-weight:600;
+    box-shadow: 0 2px 8px rgba(201,122,149,0.25);
+}
+
+.logo {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.4rem;
+    font-weight:700;
+}
+
+.logo img {
+    width:90px;
+    height:90px;
+    object-fit:contain;
+    border-radius:5px;
+}
+
+.nav-links {
+    list-style:none;
+    display:flex;
+    gap:25px;
+    align-items:center;
+    margin:0;
+    padding:0;
+}
+
+.nav-links a {
+    color:#5A3A44;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color:#C97A95;
+    border-bottom:2px solid #C97A95;
+}
+
+/* ===== CART ICON ===== */
+.cart-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.cart-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.cart-icon:hover img {
+    transform: scale(1.1);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #d977a3;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 12px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* ===== CONTACT PAGE ===== */
+.contact-page {
+    max-width:700px;
+    margin:60px auto;
+    padding:40px 30px;
+    text-align:center;
+    background:#ffffff;
+    border-radius:26px;
+    box-shadow:0 18px 40px rgba(201,122,149,0.18);
+}
+
+.contact-page h2 {
+    color:#C97A95;
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+.contact-page p {
+    color:#5A3A44;
+    font-size:1.1rem;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+/* ===== BUTTON ===== */
+.btn-primary {
+    background:#C97A95;
+    color:#fff;
+    padding:14px 35px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:1rem;
+    transition:0.3s;
+    display:inline-block;
+}
+
+.btn-primary:hover {
+    background:#B5677F;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background:#E8B7C8;
+    color:#5A3A44;
+    text-align:center;
+    padding:22px;
+    font-weight:500;
+    margin-top:50px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+    .contact-page {
+        margin:40px 15px;
+        padding:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="fairytale2.jpg" alt="Fairytale Logo">
+    Fairytale Dress
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li>
+      <a href="cart.html" class="cart-icon" title="Cart">
+        <img src="cart.jpg" alt="Cart">
+        <span class="cart-badge" id="cart-count">0</span>
+      </a>
+    </li>
+    <li class="lang-switch"><a href="index.html">EN</a> | <a href="index_ar.html">AR</a></li>
+  </ul>
+</nav>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section class="contact-page">
+  <h2>Contact Us</h2>
+  <p>We are happy to assist you anytime ✨</p>
+
+  <a class="btn-primary" href="https://wa.me/968XXXXXXXX" target="_blank">
+    Chat on WhatsApp
+  </a>
+
+  <p style="margin-top:30px; font-weight:600;">
+    Instagram: @_fairytale_dress
+  </p>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>© 2026 Fairytale Dress. All Rights Reserved.</p>
+</footer>
+
+<script>
+// Update cart count
+const cartCountBadge = document.getElementById("cart-count");
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+cartCountBadge.textContent = cart.length;
+
+// Redirect if not logged in (same as other pages)
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+if(!currentUser){
+    alert("Please register or login first!");
+    window.location.href = "register.html";
+}
+</script>
+
+</body>
+</html>

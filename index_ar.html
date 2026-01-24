@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>فساتين خيالية | أزياء الأطفال</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===== BASE STYLES ===== */
+body {font-family:'Poppins',sans-serif;margin:0;padding:0;background:#FFFDFB;color:#5A3A44;}
+a{text-decoration:none;}
+
+/* ===== NAVBAR ===== */
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:#E8B7C8;color:#5A3A44;font-weight:600;box-shadow:0 2px 8px rgba(201,122,149,0.25);}
+.logo{display:flex;align-items:center;gap:10px;font-size:1.4rem;font-weight:700;}
+.logo img{width:90px;height:90px;object-fit:contain;border-radius:5px;}
+.nav-links{list-style:none;display:flex;gap:25px;align-items:center;margin:0;padding:0;}
+.nav-links a{color:#5A3A44;font-weight:600;transition:0.3s;}
+.nav-links a:hover,.nav-links a.active{color:#C97A95;border-bottom:2px solid #C97A95;}
+.cart-icon{position:relative;display:flex;align-items:center;justify-content:center;width:28px;height:28px;cursor:pointer;}
+.cart-icon img{width:28px;height:28px;object-fit:contain;transition:transform 0.3s;}
+.cart-icon:hover img{transform:scale(1.1);}
+.cart-badge{position:absolute;top:-8px;left:-8px;background:#C97A95;color:#fff;font-size:0.75rem;font-weight:700;padding:2px 6px;border-radius:12px;text-align:center;line-height:1.2;white-space:nowrap;min-width:16px;}
+.lang-switch a{margin-right:10px;color:#5A3A44;font-weight:600;}
+.lang-switch a:hover{color:#C97A95;}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001;}
+.hamburger div{width:25px;height:3px;background:#5A3A44;border-radius:2px;transition:0.3s;}
+@media(max-width:768px){
+  .hamburger{display:flex;}
+  .nav-links{position:absolute;top:70px;right:0;left:0;background:#E8B7C8;flex-direction:column;display:none;padding:10px 0;}
+  .nav-links.show{display:flex;}
+  .nav-links li{text-align:center;width:100%;padding:10px 0;}
+}
+
+/* HERO */
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:80px 20px;background:linear-gradient(to bottom,#FFFDFB,#F8E8EE);}
+.hero img{max-width:1500px;margin-bottom:20px;}
+.hero h1{color:#C97A95;font-size:2.4rem;margin-bottom:15px;}
+.hero p{color:#7A4A57;font-size:1.2rem;margin-bottom:25px;}
+.btn-primary{background:#C97A95;color:#fff;padding:15px 35px;border-radius:10px;font-weight:600;font-size:1rem;transition:0.3s;}
+.btn-primary:hover{background:#B56782;}
+
+/* INTRO */
+.intro{text-align:center;padding:70px 20px;}
+.intro h2{color:#C97A95;margin-bottom:15px;font-size:2rem;}
+.intro p{max-width:700px;margin:0 auto;font-size:1.1rem;color:#5A3A44;line-height:1.7;}
+
+/* FEATURES */
+.features{display:flex;justify-content:center;gap:30px;text-align:center;padding:60px 20px;flex-wrap:wrap;}
+.feature{background:#fff;border:1px solid #E6C9D3;border-radius:18px;padding:28px 22px;width:230px;font-weight:600;color:#C97A95;font-size:1.1rem;box-shadow:0 6px 16px rgba(201,122,149,0.18);transition:0.3s;}
+.feature:hover{transform:translateY(-6px);box-shadow:0 10px 24px rgba(201,122,149,0.28);}
+
+/* FOOTER */
+footer{background:#E8B7C8;color:#5A3A44;text-align:center;padding:22px;font-weight:500;}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="fairytale2.jpg" alt="Fairytale Logo"> فساتين خيالية
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="index_ar.html" class="active">الرئيسية</a></li>
+    <li><a href="collection_ar.html">المجموعة</a></li>
+    <li><a href="about_ar.html">من نحن</a></li>
+    <li><a href="contact_ar.html">تواصل معنا</a></li>
+    <li>
+      <a href="cart_ar.html" class="cart-icon">
+        <img src="cart.jpg" alt="السلة">
+        <span class="cart-badge" id="cart-count">0</span>
+      </a>
+    </li>
+    <li>
+      <a href="index_ar.html" class="lang-btn active">AR</a> | 
+      <a href="index.html" class="lang-btn">EN</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <img src="logo1.jpg" alt="Fairytale Logo">
+  <h1>فساتين ساحرة لأميرتك الصغيرة</h1>
+  <p>مصممة بحب • ومريحة للارتداء</p>
+  <a href="collection_ar.html" class="btn-primary">تسوقي الآن</a>
+</header>
+
+<!-- INTRO -->
+<section class="intro">
+  <h2>لماذا فساتين خيالية؟</h2>
+  <p>نؤمن أن كل فتاة صغيرة تستحق لحظة ساحرة. فساتيننا مستوحاة من قصص الخيال ومصنوعة من أقمشة عالية الجودة لتجمع بين الجمال والراحة. مناسبة للحفلات، أعياد الميلاد، أو لمسة سحرية يومية.</p>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="feature">✨ جودة ممتازة</div>
+  <div class="feature">👗 تصميم أنيق</div>
+  <div class="feature">🧵 ناعم ومريح</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 فساتين خيالية. جميع الحقوق محفوظة.</p>
+</footer>
+
+<script>
+// Hamburger toggle
+function toggleMenu(){
+  document.querySelector('.nav-links').classList.toggle('show');
+}
+
+// Cart count
+const cartCountBadge = document.getElementById("cart-count");
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+cartCountBadge.textContent = cart.length;
+</script>
+
+</body>
+</html>
